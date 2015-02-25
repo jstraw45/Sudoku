@@ -1,0 +1,300 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sudoku.Model.UnitTests</name>
+    </assembly>
+    <members>
+        <member name="T:Sudoku.Model.UnitTests.CellUnitTests">
+            <summary>
+            Unit tests for Sudoku.Model.Cell
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_Constructor_InstantiationSuccessful">
+            <summary>
+            Does the new Cell instantiate correctly?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_Constructor_InstantiationNoParamsSuccessful">
+            <summary>
+            Does the new Cell instantiate correctly?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_Constructor_AllPossibilitiesRemain">
+            <summary>
+            Does the new Cell contain all feasible answers?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_Constructor_IsSolvable">
+            <summary>
+            Are there possible solutions that have not been disqualified?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_Constructor_CurrentValueStateValid">
+            <summary>
+            Is the new Cell correctly marked as answer unknown?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_ConstructorSolved_InstantiationSuccessful">
+            <summary>
+            Does the new Cell instantiate correctly?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_ConstructorSolved_BadParameter">
+            <summary>
+            Does an out-of-range parameter throw correct Exception?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_IsPotentialSolution_Valid">
+            <summary>
+            Are valid possibilities correctly identified?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_IsPotentialSolution_TooLow">
+            <summary>
+            Does an out-of-range value throw an Exception?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_IsPotentialSolution_TooHigh">
+            <summary>
+            Does an out-of-range value throw an Exception?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_Disqualify_SuccessfullyRemovesPossibility">
+            <summary>
+            Does Disqualify remove the value from consideration?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_Disqualify_TooLow">
+            <summary>
+            Does Disqualify throw exception if value is too low?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_Disqualify_TooHigh">
+            <summary>
+            Does Disqualify throw exception if value is too high?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_Set_Valid">
+            <summary>
+            Can an in-range value be successfully set?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_Set_TooHigh">
+            <summary>
+            Does an out-of-range value throw an Exception?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_Set_Disqualified">
+            <summary>
+            Does a disqualified possibility throw an Exception?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_Set_Unsolvable">
+            <summary>
+            Does an unsolvable Cell throw an Exception?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_Clue_Valid">
+            <summary>
+            Does Clue properly represent legal square puzzles
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_ToString_ValidUnsolved">
+            <summary>
+            Is string representation of unsolved Cell correct?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_ToString_ValidSolved">
+            <summary>
+            Is string representation of solved Cell correct?
+            </summary>
+        </member>
+        <member name="T:Sudoku.Model.UnitTests.GameUnitTests">
+            <summary>
+            Unit tests for Sudoku.Model.Grid
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.#ctor">
+            <summary>
+            Unit tests for Sudoku.Model.Grid
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_Constructor2Param_Valid">
+            <summary>
+            Does the new Grid instantiate correctly?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_Constructor2Param_ImperfectSquare">
+            <summary>
+            Does the new Grid reject non-perfect-square argument?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_Constructor2Param_ArgumentTooSmall">
+            <summary>
+            Does the new Grid refuse argument too small?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_Constructor2Param_ArgumentTooLarge">
+            <summary>
+            Does the new Grid refuse argument too large?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_Constructor2Param_CellsOfValidType">
+            <summary>
+            Is the two-dimensional array created correctly?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_Constructor3Param_ValidGrid">
+            <summary>
+            Does the new Grid instantiate correctly?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_Constructor3Param_ValidKnownCell">
+            <summary>
+            Does the new Grid instantiate known Cells correctly?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_Constructor3Param_ImperfectSquare">
+            <summary>
+            Does the new Grid reject non-perfect-square argument?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_Constructor3Param_ArgumentTooSmall">
+            <summary>
+            Does the new Grid refuse argument too small?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_Constructor3Param_ArgumentTooLarge">
+            <summary>
+            Does the new Grid refuse argument too large?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_Constructor3Param_ArgumentDimensionsMismatched">
+            <summary>
+            Does the new Grid refuse mismatched arguments?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_Constructor3Param_CellsOfValidType">
+            <summary>
+            Is the two-dimensional array created correctly?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_SolvedCells_Correct">
+            <summary>
+            Is the count of correctly solved Cells right?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_IdentifyRegion_Correct">
+            <summary>
+            Is the region for a Cell correctly identified?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_LocationsInRegion_RandomRegionValid">
+            <summary>
+            Do rows and columns of identified cells match the specified region?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_CellsByRow_RandomRowValid">
+            <summary>
+            Does CellsByRow(random) match the same row of the Grid?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_CellsByColumn_RandomColumnValid">
+            <summary>
+            Does CellsByColumn(random) match the same column of the Grid?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_CellsByRegion_RandomRegionValid">
+            <summary>
+            Does CellsByRegion(random) match the same region of the Grid?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_SetCell_ValidDisqualificationVerification">
+            <summary>
+            Does setting a Cell value correctly disqualify others in same row, column, and region?
+            <remarks>Depends on Cell.IdentifyRegion, tested elsewhere</remarks>
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_SetCellFromMoveObject_ValidDisqualificationVerification">
+            <summary>
+            Does setting a Cell value correctly disqualify others in same row, column, and region?
+            <remarks>Depends on Cell.IdentifyRegion, tested elsewhere</remarks>
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_SetCell_DisqualifiedValue">
+            <summary>
+            Does attempting to set a Cell to a disqualified value throw an Exception
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_ToString_SolvedValid">
+            <summary>
+            Is the text representation of the Grid correct for a solved 4x4 puzzle?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_DeepClone_SameValues">
+            <summary>
+            Is the clone equivalent?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_DeepClone_DifferentInstances">
+            <summary>
+            Is the clone distinct from the original?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_ToString_UnSolvedValid">
+            <summary>
+            Is the text representation of the Grid correct for an unsolved puzzle?
+            </summary>
+        </member>
+        <member name="T:Sudoku.Model.UnitTests.PuzzleFactoryUnitTests">
+            <summary>
+            Unit tests for Sudoku.Model.PuzzleFactory
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.PuzzleFactoryUnitTests.PuzzleFactory_GetSudoku_Valid">
+            <summary>
+            Does the factory instantiate a new game correctly?
+            </summary>
+        </member>
+        <member name="T:Sudoku.Model.UnitTests.MoveUnitTests">
+            <summary>
+            Unit tests for Utility.Move struct
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.MoveUnitTests.Move_DefaultConstructor_InstantiationSuccessful">
+            <summary>
+            Does the new Move instantiate correctly?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.MoveUnitTests.Move_DefaultConstructor_DefaultProperties">
+            <summary>
+            Do properties in a new Move instantiate correctly?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.MoveUnitTests.Move_Constructor_ParametersSet">
+            <summary>
+            Do parameters in a new Move constructor configure correctly?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.MoveUnitTests.Move_RowParameter_Persists">
+            <summary>
+            Does Row parameter in a new Move persist?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.MoveUnitTests.Move_ColumnParameter_Persists">
+            <summary>
+            Does Column parameter in a new Move persist?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.MoveUnitTests.Move_ValueParameter_Persists">
+            <summary>
+            Does Value parameter in a new Move persist?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.MoveUnitTests.Move_ToString_Valid">
+            <summary>
+            Does default ToString match design plan?
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,10 @@
+G:\C# 2013\Experiments\Sudoku\Sudoku.UI.Utility.UnitTests\obj\Debug\Sudoku.UI.Utility.UnitTests.csprojResolveAssemblyReference.cache
+G:\C# 2013\Experiments\Sudoku\Sudoku.UI.Utility.UnitTests\bin\Debug\Sudoku.UI.Utility.UnitTests.dll
+G:\C# 2013\Experiments\Sudoku\Sudoku.UI.Utility.UnitTests\bin\Debug\Sudoku.UI.Utility.UnitTests.pdb
+G:\C# 2013\Experiments\Sudoku\Sudoku.UI.Utility.UnitTests\bin\Debug\Sudoku.UI.Utility.dll
+G:\C# 2013\Experiments\Sudoku\Sudoku.UI.Utility.UnitTests\bin\Debug\Utility.dll
+G:\C# 2013\Experiments\Sudoku\Sudoku.UI.Utility.UnitTests\bin\Debug\Sudoku.UI.Utility.pdb
+G:\C# 2013\Experiments\Sudoku\Sudoku.UI.Utility.UnitTests\bin\Debug\Utility.pdb
+G:\C# 2013\Experiments\Sudoku\Sudoku.UI.Utility.UnitTests\bin\Debug\Utility.xml
+G:\C# 2013\Experiments\Sudoku\Sudoku.UI.Utility.UnitTests\obj\Debug\Sudoku.UI.Utility.UnitTests.dll
+G:\C# 2013\Experiments\Sudoku\Sudoku.UI.Utility.UnitTests\obj\Debug\Sudoku.UI.Utility.UnitTests.pdb

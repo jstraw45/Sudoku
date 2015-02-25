@@ -1,0 +1,8 @@
+G:\C# 2013\Experiments\Sudoku\Sudoku\bin\Debug\Sudoku.exe.config
+G:\C# 2013\Experiments\Sudoku\Sudoku\obj\Debug\Sudoku.csprojResolveAssemblyReference.cache
+G:\C# 2013\Experiments\Sudoku\Sudoku\obj\Debug\Sudoku.Properties.Resources.resources
+G:\C# 2013\Experiments\Sudoku\Sudoku\obj\Debug\Sudoku.csproj.GenerateResource.Cache
+G:\C# 2013\Experiments\Sudoku\Sudoku\bin\Debug\Sudoku.exe
+G:\C# 2013\Experiments\Sudoku\Sudoku\bin\Debug\Sudoku.pdb
+G:\C# 2013\Experiments\Sudoku\Sudoku\obj\Debug\Sudoku.exe
+G:\C# 2013\Experiments\Sudoku\Sudoku\obj\Debug\Sudoku.pdb

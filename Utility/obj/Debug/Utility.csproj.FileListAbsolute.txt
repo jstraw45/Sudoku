@@ -1,0 +1,11 @@
+E:\CIT 275\Sudoku\Utility\bin\Debug\Utility.dll
+E:\CIT 275\Sudoku\Utility\bin\Debug\Utility.pdb
+E:\CIT 275\Sudoku\Utility\obj\Debug\Utility.csprojResolveAssemblyReference.cache
+E:\CIT 275\Sudoku\Utility\obj\Debug\Utility.dll
+E:\CIT 275\Sudoku\Utility\obj\Debug\Utility.pdb
+G:\C# 2013\Experiments\Sudoku\Utility\bin\Debug\Utility.dll
+G:\C# 2013\Experiments\Sudoku\Utility\bin\Debug\Utility.pdb
+G:\C# 2013\Experiments\Sudoku\Utility\obj\Debug\Utility.csprojResolveAssemblyReference.cache
+G:\C# 2013\Experiments\Sudoku\Utility\obj\Debug\Utility.dll
+G:\C# 2013\Experiments\Sudoku\Utility\obj\Debug\Utility.pdb
+G:\C# 2013\Experiments\Sudoku\Utility\bin\Debug\Utility.XML
