@@ -36,3 +36,40 @@ G:\C# 2013\Experiments\Sudoku\Sudoku.UI\bin\Debug\Utility.pdb
 G:\C# 2013\Experiments\Sudoku\Sudoku.UI\bin\Debug\Sudoku.UI.Utility.dll
 G:\C# 2013\Experiments\Sudoku\Sudoku.UI\bin\Debug\Sudoku.UI.Utility.pdb
 G:\C# 2013\Experiments\Sudoku\Sudoku.UI\bin\Debug\Utility.xml
+E:\CIT 275\Sudoku - 02242015\Sudoku.UI\bin\Debug\Sudoku.UI.exe.config
+E:\CIT 275\Sudoku - 02242015\Sudoku.UI\obj\Debug\Sudoku.UI.exe
+E:\CIT 275\Sudoku - 02242015\Sudoku.UI\obj\Debug\Sudoku.UI.pdb
+E:\CIT 275\Sudoku - 02242015\Sudoku.UI\bin\Debug\Sudoku.UI.exe
+E:\CIT 275\Sudoku - 02242015\Sudoku.UI\bin\Debug\Sudoku.UI.pdb
+E:\CIT 275\Sudoku - 02242015\Sudoku.UI\bin\Debug\Sudoku.Model.dll
+E:\CIT 275\Sudoku - 02242015\Sudoku.UI\bin\Debug\Sudoku.UI.Utility.dll
+E:\CIT 275\Sudoku - 02242015\Sudoku.UI\bin\Debug\Utility.dll
+E:\CIT 275\Sudoku - 02242015\Sudoku.UI\bin\Debug\Sudoku.Model.pdb
+E:\CIT 275\Sudoku - 02242015\Sudoku.UI\bin\Debug\Sudoku.Model.xml
+E:\CIT 275\Sudoku - 02242015\Sudoku.UI\bin\Debug\Sudoku.UI.Utility.pdb
+E:\CIT 275\Sudoku - 02242015\Sudoku.UI\bin\Debug\Utility.pdb
+E:\CIT 275\Sudoku - 02242015\Sudoku.UI\bin\Debug\Utility.xml
+E:\CIT 275\Sudoku - 02242015\Sudoku.UI\obj\Debug\Sudoku.UI.csprojResolveAssemblyReference.cache
+E:\CIT 275\Sudoku - 02242015\Sudoku.UI\obj\Debug\Sudoku.UI.Properties.Resources.resources
+E:\CIT 275\Sudoku - 02242015\Sudoku.UI\obj\Debug\Sudoku.UI.UserInterface.resources
+E:\CIT 275\Sudoku - 02242015\Sudoku.UI\obj\Debug\Sudoku.UI.csproj.GenerateResource.Cache
+E:\CIT 275\Sudoku\Sudoku.UI\bin\Debug\Sudoku.UI.Utility.dll
+E:\CIT 275\Sudoku\Sudoku.UI\bin\Debug\Sudoku.UI.Utility.pdb
+E:\CIT 275\Sudoku\Sudoku.UI\bin\Debug\Utility.xml
+E:\CIT 275\Sudoku - Sprint3\Sudoku.UI\bin\Debug\Sudoku.UI.exe.config
+E:\CIT 275\Sudoku - Sprint3\Sudoku.UI\obj\Debug\Sudoku.UI.exe
+E:\CIT 275\Sudoku - Sprint3\Sudoku.UI\obj\Debug\Sudoku.UI.pdb
+E:\CIT 275\Sudoku - Sprint3\Sudoku.UI\bin\Debug\Sudoku.UI.exe
+E:\CIT 275\Sudoku - Sprint3\Sudoku.UI\bin\Debug\Sudoku.UI.pdb
+E:\CIT 275\Sudoku - Sprint3\Sudoku.UI\bin\Debug\Sudoku.Model.dll
+E:\CIT 275\Sudoku - Sprint3\Sudoku.UI\bin\Debug\Sudoku.UI.Utility.dll
+E:\CIT 275\Sudoku - Sprint3\Sudoku.UI\bin\Debug\Utility.dll
+E:\CIT 275\Sudoku - Sprint3\Sudoku.UI\bin\Debug\Sudoku.Model.pdb
+E:\CIT 275\Sudoku - Sprint3\Sudoku.UI\bin\Debug\Sudoku.Model.xml
+E:\CIT 275\Sudoku - Sprint3\Sudoku.UI\bin\Debug\Sudoku.UI.Utility.pdb
+E:\CIT 275\Sudoku - Sprint3\Sudoku.UI\bin\Debug\Utility.pdb
+E:\CIT 275\Sudoku - Sprint3\Sudoku.UI\bin\Debug\Utility.xml
+E:\CIT 275\Sudoku - Sprint3\Sudoku.UI\obj\Debug\Sudoku.UI.csprojResolveAssemblyReference.cache
+E:\CIT 275\Sudoku - Sprint3\Sudoku.UI\obj\Debug\Sudoku.UI.Properties.Resources.resources
+E:\CIT 275\Sudoku - Sprint3\Sudoku.UI\obj\Debug\Sudoku.UI.UserInterface.resources
+E:\CIT 275\Sudoku - Sprint3\Sudoku.UI\obj\Debug\Sudoku.UI.csproj.GenerateResource.Cache

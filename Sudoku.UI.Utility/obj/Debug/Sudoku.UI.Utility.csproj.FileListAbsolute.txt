@@ -6,3 +6,27 @@ G:\C# 2013\Experiments\Sudoku\Sudoku.UI.Utility\obj\Debug\Sudoku.UI.Utility.dll
 G:\C# 2013\Experiments\Sudoku\Sudoku.UI.Utility\obj\Debug\Sudoku.UI.Utility.pdb
 G:\C# 2013\Experiments\Sudoku\Sudoku.UI.Utility\obj\Debug\Sudoku.UI.Utility.csprojResolveAssemblyReference.cache
 G:\C# 2013\Experiments\Sudoku\Sudoku.UI.Utility\bin\Debug\Utility.xml
+E:\CIT 275\Sudoku - 02242015\Sudoku.UI.Utility\bin\Debug\Sudoku.UI.Utility.dll
+E:\CIT 275\Sudoku - 02242015\Sudoku.UI.Utility\bin\Debug\Sudoku.UI.Utility.pdb
+E:\CIT 275\Sudoku - 02242015\Sudoku.UI.Utility\bin\Debug\Utility.dll
+E:\CIT 275\Sudoku - 02242015\Sudoku.UI.Utility\bin\Debug\Utility.pdb
+E:\CIT 275\Sudoku - 02242015\Sudoku.UI.Utility\bin\Debug\Utility.xml
+E:\CIT 275\Sudoku - 02242015\Sudoku.UI.Utility\obj\Debug\Sudoku.UI.Utility.csprojResolveAssemblyReference.cache
+E:\CIT 275\Sudoku - 02242015\Sudoku.UI.Utility\obj\Debug\Sudoku.UI.Utility.dll
+E:\CIT 275\Sudoku - 02242015\Sudoku.UI.Utility\obj\Debug\Sudoku.UI.Utility.pdb
+E:\CIT 275\Sudoku\Sudoku.UI.Utility\bin\Debug\Sudoku.UI.Utility.dll
+E:\CIT 275\Sudoku\Sudoku.UI.Utility\bin\Debug\Sudoku.UI.Utility.pdb
+E:\CIT 275\Sudoku\Sudoku.UI.Utility\bin\Debug\Utility.dll
+E:\CIT 275\Sudoku\Sudoku.UI.Utility\bin\Debug\Utility.pdb
+E:\CIT 275\Sudoku\Sudoku.UI.Utility\bin\Debug\Utility.xml
+E:\CIT 275\Sudoku\Sudoku.UI.Utility\obj\Debug\Sudoku.UI.Utility.csprojResolveAssemblyReference.cache
+E:\CIT 275\Sudoku\Sudoku.UI.Utility\obj\Debug\Sudoku.UI.Utility.dll
+E:\CIT 275\Sudoku\Sudoku.UI.Utility\obj\Debug\Sudoku.UI.Utility.pdb
+E:\CIT 275\Sudoku - Sprint3\Sudoku.UI.Utility\bin\Debug\Sudoku.UI.Utility.dll
+E:\CIT 275\Sudoku - Sprint3\Sudoku.UI.Utility\bin\Debug\Sudoku.UI.Utility.pdb
+E:\CIT 275\Sudoku - Sprint3\Sudoku.UI.Utility\bin\Debug\Utility.dll
+E:\CIT 275\Sudoku - Sprint3\Sudoku.UI.Utility\bin\Debug\Utility.pdb
+E:\CIT 275\Sudoku - Sprint3\Sudoku.UI.Utility\bin\Debug\Utility.xml
+E:\CIT 275\Sudoku - Sprint3\Sudoku.UI.Utility\obj\Debug\Sudoku.UI.Utility.csprojResolveAssemblyReference.cache
+E:\CIT 275\Sudoku - Sprint3\Sudoku.UI.Utility\obj\Debug\Sudoku.UI.Utility.dll
+E:\CIT 275\Sudoku - Sprint3\Sudoku.UI.Utility\obj\Debug\Sudoku.UI.Utility.pdb

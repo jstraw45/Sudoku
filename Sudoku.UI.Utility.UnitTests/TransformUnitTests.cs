@@ -2,6 +2,7 @@
  * Unit tests for Sudoku.UI.Utility Transform class
  * Jeff Straw | Northwestern Michigan College
  * 02/22/2015: Initial release
+ * 03/08/2015: Added wide and narrow rectangle format constructor tests
  *********************************************************************************/
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -39,6 +40,19 @@ namespace Sudoku.UI.Utility.UnitTests
         {
             // Instantiated in test file's constructor
             Assert.IsInstanceOfType(trans, typeof(Transform));
+        }
+
+        /// <summary>
+        /// Instantiate correctly?
+        /// </summary>
+        [TestMethod()]
+        public void Transform_Constructor_NonSquare()
+        {
+            var wide = new Transform(9, new Size(200, 100));
+            var narrow = new Transform(9, new Size(100, 200));
+            // Instantiated in test file's constructor
+            Assert.IsInstanceOfType(wide, typeof(Transform));
+            Assert.IsInstanceOfType(narrow, typeof(Transform));
         } 
         #endregion
 

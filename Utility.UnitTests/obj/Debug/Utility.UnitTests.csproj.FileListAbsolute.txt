@@ -13,3 +13,20 @@ G:\C# 2013\Experiments\Sudoku\Utility.UnitTests\obj\Debug\Utility.UnitTests.cspr
 G:\C# 2013\Experiments\Sudoku\Utility.UnitTests\obj\Debug\Utility.UnitTests.dll
 G:\C# 2013\Experiments\Sudoku\Utility.UnitTests\obj\Debug\Utility.UnitTests.pdb
 G:\C# 2013\Experiments\Sudoku\Utility.UnitTests\bin\Debug\Utility.xml
+E:\CIT 275\Sudoku - 02242015\Utility.UnitTests\bin\Debug\Utility.UnitTests.dll
+E:\CIT 275\Sudoku - 02242015\Utility.UnitTests\bin\Debug\Utility.UnitTests.pdb
+E:\CIT 275\Sudoku - 02242015\Utility.UnitTests\bin\Debug\Utility.dll
+E:\CIT 275\Sudoku - 02242015\Utility.UnitTests\bin\Debug\Utility.pdb
+E:\CIT 275\Sudoku - 02242015\Utility.UnitTests\bin\Debug\Utility.xml
+E:\CIT 275\Sudoku - 02242015\Utility.UnitTests\obj\Debug\Utility.UnitTests.csprojResolveAssemblyReference.cache
+E:\CIT 275\Sudoku - 02242015\Utility.UnitTests\obj\Debug\Utility.UnitTests.dll
+E:\CIT 275\Sudoku - 02242015\Utility.UnitTests\obj\Debug\Utility.UnitTests.pdb
+E:\CIT 275\Sudoku\Utility.UnitTests\bin\Debug\Utility.xml
+E:\CIT 275\Sudoku - Sprint3\Utility.UnitTests\bin\Debug\Utility.UnitTests.dll
+E:\CIT 275\Sudoku - Sprint3\Utility.UnitTests\bin\Debug\Utility.UnitTests.pdb
+E:\CIT 275\Sudoku - Sprint3\Utility.UnitTests\bin\Debug\Utility.dll
+E:\CIT 275\Sudoku - Sprint3\Utility.UnitTests\bin\Debug\Utility.pdb
+E:\CIT 275\Sudoku - Sprint3\Utility.UnitTests\bin\Debug\Utility.xml
+E:\CIT 275\Sudoku - Sprint3\Utility.UnitTests\obj\Debug\Utility.UnitTests.csprojResolveAssemblyReference.cache
+E:\CIT 275\Sudoku - Sprint3\Utility.UnitTests\obj\Debug\Utility.UnitTests.dll
+E:\CIT 275\Sudoku - Sprint3\Utility.UnitTests\obj\Debug\Utility.UnitTests.pdb

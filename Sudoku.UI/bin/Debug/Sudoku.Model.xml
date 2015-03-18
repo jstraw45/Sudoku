@@ -14,20 +14,26 @@
             Value that represents a Cell that has not yet been solved
             </summary>
         </member>
-        <member name="M:Sudoku.Model.Cell.#ctor(System.Char,System.Int32)">
+        <member name="M:Sudoku.Model.Cell.#ctor(System.Char,System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
             Individual Sudoku location
             </summary>
             <param name="minValue">Smallest legal value for this cell; default 1 for standard Sudoku puzzle</param>
             <param name="numValues">Quantity of legal values for this cell; default 9 for standard Sudoku puzzle</param>
+            <param name="row">Vertical location in Sudoku puzzle grid</param>
+            <param name="column">Horizontal location in Sudoku puzzle grid</param>
+            <param name="region">Square zone location in Sudoku puzzle grid</param>
         </member>
-        <member name="M:Sudoku.Model.Cell.#ctor(System.Char,System.Char,System.Int32)">
+        <member name="M:Sudoku.Model.Cell.#ctor(System.Char,System.Char,System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
             Individual Sudoku location
             </summary>
             <param name="value">Pre-known solution for this Cell</param>
             <param name="minValue">Smallest legal value for this cell; default 1 for standard Sudoku puzzle</param>
             <param name="numValues">Quantity of legal values for this cell; default 9 for standard Sudoku puzzle</param>
+            <param name="row">Vertical location in Sudoku puzzle grid</param>
+            <param name="column">Horizontal location in Sudoku puzzle grid</param>
+            <param name="region">Square zone location in Sudoku puzzle grid</param>
         </member>
         <member name="M:Sudoku.Model.Cell.IsPotentialSolution(System.Char)">
             <summary>
@@ -43,6 +49,34 @@
             <exception cref="T:System.ArgumentOutOfRangeException">Thrown when argument is too small or too large</exception>
             <param name="value">Value to exclude from consideration</param>
         </member>
+        <member name="M:Sudoku.Model.Cell.AddScratch(System.Int32)">
+            <summary>
+            Identify a particular location as a potential solution location (not declaring so, just "guessing")
+            </summary>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when argument is too small or too large</exception>
+            <param name="index">Zero-based index of location to say "maybe"</param>
+        </member>
+        <member name="M:Sudoku.Model.Cell.AddScratch(System.Char)">
+            <summary>
+            Identify a particular value as a potential solution (not declaring so, just "guessing")
+            </summary>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when argument is too small or too large</exception>
+            <param name="value">Value to say "maybe"</param>
+        </member>
+        <member name="M:Sudoku.Model.Cell.RemoveScratch(System.Int32)">
+            <summary>
+            Identify a particular location as unlikely as a potential solution location (not declaring, just "guessing")
+            </summary>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when argument is too small or too large</exception>
+            <param name="index">Zero-based index of location to say "probably not"</param>
+        </member>
+        <member name="M:Sudoku.Model.Cell.RemoveScratch(System.Char)">
+            <summary>
+            Identify a particular value as unlikely as a potential solution (not declaring, just "guessing")
+            </summary>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when argument is too small or too large</exception>
+            <param name="value">Value to say "probably not"</param>
+        </member>
         <member name="M:Sudoku.Model.Cell.Set(System.Char)">
             <summary>
             Enter the solution to this Cell
@@ -50,6 +84,22 @@
             <exception cref="T:System.ApplicationException">Thrown when all possible solutions have been disqualified</exception>
             <exception cref="T:System.ApplicationException">Thrown when argument has been previously disqualified</exception>
             <param name="value">Correct value for this Cell</param>
+        </member>
+        <member name="M:Sudoku.Model.Cell.ValueAtIndex(System.Int32)">
+            <summary>
+            Identify the sole potential value that could be valid at the given location
+            </summary>
+            /// <exception cref="T:System.ArgumentOutOfRangeException">Thrown when argument is too small or too large</exception>
+            <param name="index">Zero-based index of value</param>
+            <returns>Value that could be legal at this index</returns>
+        </member>
+        <member name="M:Sudoku.Model.Cell.IndexOfValue(System.Char)">
+            <summary>
+            Identify the index where a specified value will be legal
+            </summary>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when argument is too small or too large</exception>
+            <param name="value">Value that could be a solution for this Cell</param>
+            <returns>Zero-based index where value might be legal</returns>
         </member>
         <member name="M:Sudoku.Model.Cell.ToString">
             <summary>
@@ -60,6 +110,21 @@
         <member name="P:Sudoku.Model.Cell.CurrentValue">
             <summary>
             Solution, if applicable, or valueWhenUnsolved if not solved yet
+            </summary>
+        </member>
+        <member name="P:Sudoku.Model.Cell.Row">
+            <summary>
+            Vertical location in Sudoku puzzle grid
+            </summary>
+        </member>
+        <member name="P:Sudoku.Model.Cell.Column">
+            <summary>
+            Horizontal location in Sudoku puzzle grid
+            </summary>
+        </member>
+        <member name="P:Sudoku.Model.Cell.Region">
+            <summary>
+            Square zone location in Sudoku puzzle grid
             </summary>
         </member>
         <member name="P:Sudoku.Model.Cell.MinValue">
@@ -96,6 +161,11 @@
         <member name="P:Sudoku.Model.Cell.Domain">
             <summary>
             Ordered list representation of all possibilities, including disqualified ones
+            </summary>
+        </member>
+        <member name="P:Sudoku.Model.Cell.ScratchPad">
+            <summary>
+            Ordered list representation of potential value guesses, initially all off.
             </summary>
         </member>
         <member name="T:Sudoku.Model.Game">
@@ -172,6 +242,68 @@
             <param name="regionNumber">Region to be matched</param>
             <returns>Cells in one region</returns>
         </member>
+        <member name="M:Sudoku.Model.Game.RowsIntersectingRegion(System.Int32)">
+            <summary>
+            Identify rows that cross a given region
+            </summary>
+            <param name="region">Region to be matched</param>
+            <returns>Rows crossing the region</returns>
+        </member>
+        <member name="M:Sudoku.Model.Game.RowRegionIntersection(System.Int32,System.Int32)">
+            <summary>
+            Identify the intersection of a specified row and region
+            </summary>
+            <param name="row">Row to be matched</param>
+            <param name="region">Region to be matched</param>
+            <returns>Subset of the Game representing the intersection</returns>
+        </member>
+        <member name="M:Sudoku.Model.Game.RowExcludeRegion(System.Int32,System.Int32)">
+            <summary>
+            Identify Cells beyond the intersection of a specified row and region
+            </summary>
+            <param name="row">Row to be matched</param>
+            <param name="region">Region to be excluded</param>
+            <returns>Subset of the Game representing the excluded Cells</returns>
+        </member>
+        <member name="M:Sudoku.Model.Game.RegionExcludeRow(System.Int32,System.Int32)">
+            <summary>
+            Identify Cells beyond the intersection of a specified row and region
+            </summary>
+            <param name="row">Row to be excluded</param>
+            <param name="region">Region to be matched</param>
+            <returns>Subset of the Game representing the excluded Cells</returns>
+        </member>
+        <member name="M:Sudoku.Model.Game.ColumnsIntersectingRegion(System.Int32)">
+            <summary>
+            Identify columns that cross a given region
+            </summary>
+            <param name="region">Region to be matched</param>
+            <returns>Columns crossing the region</returns>
+        </member>
+        <member name="M:Sudoku.Model.Game.ColumnRegionIntersection(System.Int32,System.Int32)">
+            <summary>
+            Identify the intersection of a specified column and region
+            </summary>
+            <param name="column">Column to be matched</param>
+            <param name="region">Region to be matched</param>
+            <returns>Subset of the Game representing the intersection</returns>
+        </member>
+        <member name="M:Sudoku.Model.Game.ColumnExcludeRegion(System.Int32,System.Int32)">
+            <summary>
+            Identify Cells beyond the intersection of a specified column and region
+            </summary>
+            <param name="column">Column to be matched</param>
+            <param name="region">Region to be excluded</param>
+            <returns>Subset of the Game representing the excluded Cells</returns>
+        </member>
+        <member name="M:Sudoku.Model.Game.RegionExcludeColumn(System.Int32,System.Int32)">
+            <summary>
+            Identify Cells beyond the intersection of a specified column and region
+            </summary>
+            <param name="column">Column to be excluded</param>
+            <param name="region">Region to be matched</param>
+            <returns>Subset of the Game representing the excluded Cells</returns>
+        </member>
         <member name="M:Sudoku.Model.Game.SetCell(System.Int32,System.Int32,System.Char)">
             <summary>
             Enter the solution to a specified Cell
@@ -181,11 +313,11 @@
             <param name="value">Value to assign to this Cell</param>
             <exception cref="T:System.ArgumentException">Thrown when parameter value is not a legal setting for the Cell</exception>
         </member>
-        <member name="M:Sudoku.Model.Game.SetCell(Sudoku.Model.Move)">
+        <member name="M:Sudoku.Model.Game.SetCell(Utility.Move)">
             <summary>
             Enter the solution to a specified Cell
             </summary>
-            <param name="m">3D structure to identify potential move in a Sudoku puzzle</param>
+            <param name="move">3D structure to identify potential move in a Sudoku puzzle</param>
         </member>
         <member name="M:Sudoku.Model.Game.ToString">
             <summary>
@@ -198,9 +330,39 @@
             Game representation in two-dimensional array
             </summary>
         </member>
+        <member name="P:Sudoku.Model.Game.Rows">
+            <summary>
+            Game representation in list of lists arranged by row
+            </summary>
+        </member>
+        <member name="P:Sudoku.Model.Game.Columns">
+            <summary>
+            Game representation in list of lists arranged by column
+            </summary>
+        </member>
+        <member name="P:Sudoku.Model.Game.Regions">
+            <summary>
+            Game representation in list of lists arranged by region
+            </summary>
+        </member>
         <member name="P:Sudoku.Model.Game.SideLength">
             <summary>
             Number of rows, columns, and regions in the Game
+            </summary>
+        </member>
+        <member name="P:Sudoku.Model.Game.Identifier">
+            <summary>
+            Optional text designation for this particular Game
+            </summary>
+        </member>
+        <member name="P:Sudoku.Model.Game.Difficulty">
+            <summary>
+            Relative measure of solving complexity as determined by game logic
+            </summary>
+        </member>
+        <member name="P:Sudoku.Model.Game.StepCount">
+            <summary>
+            Relative measure of effort taken to solve
             </summary>
         </member>
         <member name="P:Sudoku.Model.Game.IsSolved">
@@ -211,6 +373,11 @@
         <member name="P:Sudoku.Model.Game.SolvedCells">
             <summary>
             Number of Cells in the puzzle that have been solved
+            </summary>
+        </member>
+        <member name="P:Sudoku.Model.Game.RemainingPossibilities">
+            <summary>
+            Number of possibilites that have not been disqualified yet
             </summary>
         </member>
         <member name="P:Sudoku.Model.Game.DeepClone">
@@ -238,39 +405,44 @@
             <param name="game">Two-dimensional array representing a Sudoku puzzle</param>
             <returns>List of Moves that should be taken during this pass</returns>
         </member>
-        <member name="T:Sudoku.Model.Move">
+        <member name="M:Sudoku.Model.Logic.ElsewhereInGroup(Sudoku.Model.Game)">
             <summary>
-            3D structure to identify potential move in a Sudoku puzzle
+            Find all Moves that must be excluded due to requirement in other Cells in same row/column/region
             </summary>
+            <remarks>Should be extended beyond pairs - don't know how far
+            Example: 12/24/14 trio, 3 MUST be in second row in region since 3 CAN'T be in 
+            second row in any other region</remarks>
+            <param name="game">Two-dimensional array representing a Sudoku puzzle</param>
+            <returns>List of Moves that should be excluded / disqualified during this pass</returns>
         </member>
-        <member name="F:Sudoku.Model.Move.Row">
+        <member name="M:Sudoku.Model.Logic.FindExclusionsInGroup(System.Collections.Generic.IEnumerable{Sudoku.Model.Cell})">
             <summary>
-            Vertical grouping
+            Exclude possibilities due to singles, pairs, trios, quads, quints, ... within same set of Cells
             </summary>
+            <param name="candidates">Set of Cells to investigate</param>
+            <returns>List of disqualified Moves</returns>
         </member>
-        <member name="F:Sudoku.Model.Move.Column">
+        <member name="M:Sudoku.Model.Logic.IntersectingExclusions(Sudoku.Model.Game)">
             <summary>
-            Horizontal grouping
+            Find all Moves that must be excluded due to intersection constraints between regions and rows/columns 
             </summary>
+            <param name="game">Two-dimensional array representing a Sudoku puzzle</param>
+            <returns>List of Moves that should be excluded / disqualified during this pass</returns>
         </member>
-        <member name="F:Sudoku.Model.Move.Value">
+        <member name="M:Sudoku.Model.Logic.SolveRecursively(System.Collections.Generic.List{System.Func{Sudoku.Model.Game,System.Collections.Generic.List{Utility.Move}}},System.Int32,Sudoku.Model.Game)">
             <summary>
-            Solution for the Cell
+            Attempt to use all algorithms in parameter process recursively to solve a Sudoku
             </summary>
+            <param name="process">Set of steps in a procedure</param>
+            <param name="currentStep">Algorithmic step</param>
+            <param name="game">Sudoku game object</param>
         </member>
-        <member name="M:Sudoku.Model.Move.#ctor(System.Int32,System.Int32,System.Char)">
+        <member name="M:Sudoku.Model.Logic.UpdateCellValues(System.Func{Sudoku.Model.Game,System.Collections.Generic.List{Utility.Move}},Sudoku.Model.Game)">
             <summary>
-            3D structure to identify location in a Sudoku puzzle grid
+            Attempt a solving step that might identify solved or disqualified Cells
             </summary>
-            <param name="row">Vertical grouping</param>
-            <param name="column">Horizontal grouping</param>
-            <param name="value">Solution for the Cell</param>
-        </member>
-        <member name="M:Sudoku.Model.Move.ToString">
-            <summary>
-            Short text representation of this Move
-            </summary>
-            <returns>Simple 3D coordinate set</returns>
+            <param name="nextStep">Algorithmic step</param>
+            <param name="game">Sudoku game object</param>
         </member>
         <member name="T:Sudoku.Model.CellStatus">
             <summary>

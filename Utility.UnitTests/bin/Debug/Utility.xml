@@ -60,6 +60,61 @@
             </summary>
             <returns>Simple 2D coordinate set</returns>
         </member>
+        <member name="T:Utility.Move">
+            <summary>
+            3D structure to identify potential move in a Sudoku puzzle
+            </summary>
+        </member>
+        <member name="F:Utility.Move.Row">
+            <summary>
+            Vertical grouping
+            </summary>
+        </member>
+        <member name="F:Utility.Move.Column">
+            <summary>
+            Horizontal grouping
+            </summary>
+        </member>
+        <member name="F:Utility.Move.Value">
+            <summary>
+            Solution for the Cell
+            </summary>
+        </member>
+        <member name="F:Utility.Move.Kind">
+            <summary>
+            Classification of type of Move
+            </summary>
+        </member>
+        <member name="M:Utility.Move.#ctor(System.Int32,System.Int32,System.Char,Utility.MoveType)">
+            <summary>
+            3D structure to identify location in a Sudoku puzzle grid
+            </summary>
+            <param name="row">Vertical grouping</param>
+            <param name="column">Horizontal grouping</param>
+            <param name="value">Solution for the Cell</param>
+            <param name="kind">Classification of type of Move</param>
+        </member>
+        <member name="M:Utility.Move.ToString">
+            <summary>
+            Short text representation of this Move
+            </summary>
+            <returns>Simple 3D coordinate set</returns>
+        </member>
+        <member name="T:Utility.MoveType">
+            <summary>
+            Classification of type of Move
+            </summary>
+        </member>
+        <member name="F:Utility.MoveType.Solution">
+            <summary>
+            This Move solves a Cell
+            </summary>
+        </member>
+        <member name="F:Utility.MoveType.Disqualification">
+            <summary>
+            This Move disqualifies a potential solution for a Cell
+            </summary>
+        </member>
         <member name="T:Utility.Util">
             <summary>
             Sharable code
@@ -72,6 +127,17 @@
             <param name="source">Value to be tested</param>
             <param name="squareRoot">Square root of source, if source is a perfect square</param>
             <returns></returns>
+        </member>
+        <member name="M:Utility.Util.Combinations``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+            <summary>
+            Recursive algorithm to return all combinations of k elements from n
+            </summary>
+            <remarks>http://stackoverflow.com/questions/127704/algorithm-to-return-all-combinations-of-k-elements-from-n</remarks>
+            <remarks>Based on algorithm posted publicly by user230950</remarks>
+            <typeparam name="T">Type of elements in the collection</typeparam>
+            <param name="elements">Collection to be grouped</param>
+            <param name="k">Number of elements in each group</param>
+            <returns>Array of arrays of matched sets</returns>
         </member>
         <member name="M:Utility.Util.PointFromDuad(Utility.Duad)">
             <summary>
@@ -100,6 +166,52 @@
             </summary>
             <param name="source">Original floating-point value</param>
             <returns>Closest integral equivalent</returns>
+        </member>
+        <member name="M:Utility.Util.StringToCharArray(System.String)">
+            <summary>
+            Convert string representation of a one-dimensional char array to the equivalent square char array
+            </summary>
+            <param name="source">Data represented as a single string</param>
+            <returns>Two-dimensional char array</returns>
+            <exception cref="T:System.ArgumentException">Thrown when parameter value is not a perfect square</exception>
+        </member>
+        <member name="M:Utility.Util.ScrambleChars(System.Char[0:,0:],System.Char)">
+            <summary>
+            Randomly mix characters appearing in a 2-dimensional char array
+            </summary>
+            <param name="source">Original two-dimensional character array</param>
+            <param name="locked">Locations containing this char will not be changed</param>
+            <returns>Two-dimensional char array with swapped values in same locations</returns>
+        </member>
+        <member name="M:Utility.Util.FlipHorizontal(System.Char[0:,0:])">
+            <summary>
+            Swap columns (the 2nd dimension) of a 2-dimensional char array
+            </summary>
+            <param name="source">Original two-dimensional character array</param>
+            <returns>Two-dimensional char array in mirror image</returns>
+        </member>
+        <member name="M:Utility.Util.FlipVertical(System.Char[0:,0:])">
+            <summary>
+            Swap rows (the 1st dimension) of a 2-dimensional char array
+            </summary>
+            <param name="source">Original two-dimensional character array</param>
+            <returns>Two-dimensional char array in mirror image</returns>
+        </member>
+        <member name="M:Utility.Util.RotateClockwise(System.Char[0:,0:],System.Int32)">
+            <summary>
+            Turn a 2-dimensional char array about its center
+            </summary>
+            <param name="source">Original two-dimensional character array</param>
+            <param name="quadrants">Number of 90° turns to take: 1=> 90° CW, 2=> 180°, -1=> 90° CCW</param>
+            <returns>Rotated two-dimensional char array</returns>
+        </member>
+        <member name="M:Utility.Util.RandomizeArray(System.Char[0:,0:],System.Char)">
+            <summary>
+            Randomly shuffle a 2-dimensional char array
+            </summary>
+            <param name="source">Original two-dimensional character array</param>
+            <param name="locked">Locations containing this char will not be changed</param>
+            <returns>Two-dimensional char array with values shuffled and puzzle rotated randomly</returns>
         </member>
         <member name="T:Utility.Triad">
             <summary>

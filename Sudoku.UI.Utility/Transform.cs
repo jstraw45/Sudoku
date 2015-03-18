@@ -35,7 +35,7 @@ namespace Sudoku.UI.Utility
         private int puzzleBottommost;                   // Distance from top edge of container to bottom-left corner of puzzle zone
 
         private float pixelsPerGridUnit;                // Physical span of logical grid (which includes 1 border and hints)
-        private float pixelsPerCell;                    // Physical span of puzzle cell 
+        private float PixelsPerCell;                    // Physical span of puzzle cell 
         #endregion
 
         #region [ Constructors ]
@@ -63,8 +63,8 @@ namespace Sudoku.UI.Utility
             // Values relating to logical resolution of the puzzle
             gridUnitsPerCell = regionBreadth + 1;       // 1 for each hint spot, one for one of two borders
             numberGridUnits = 1 + gameBreadth * gridUnitsPerCell;
-            pixelsPerCell = (float)(gameSize - 2 * PuzzlePadding) / gameBreadth;    // Same for x and y
-            pixelsPerGridUnit = pixelsPerCell / gridUnitsPerCell;
+            PixelsPerCell = (float)(gameSize - 2 * PuzzlePadding) / gameBreadth;    // Same for x and y
+            pixelsPerGridUnit = PixelsPerCell / gridUnitsPerCell;
         } 
         #endregion
 
@@ -79,8 +79,8 @@ namespace Sudoku.UI.Utility
             if (gameLocation.HintZone == HintZoneUnknown)
                 throw new ArgumentException("Hint zone unknown; cannot plot that point");
 
-            var cellHoriz = puzzleLeftMargin + PuzzlePadding + gameLocation.Column * pixelsPerCell;
-            var cellVert = puzzleTopMargin + PuzzlePadding + gameLocation.Row * pixelsPerCell;
+            var cellHoriz = puzzleLeftMargin + PuzzlePadding + gameLocation.Column * PixelsPerCell;
+            var cellVert = puzzleTopMargin + PuzzlePadding + gameLocation.Row * PixelsPerCell;
             var hintHorizOffset = (gameLocation.HintZone % regionBreadth + 1) * pixelsPerGridUnit;
             var hintVertOffset = (gameLocation.HintZone / regionBreadth + 1) * pixelsPerGridUnit;
 
@@ -96,8 +96,8 @@ namespace Sudoku.UI.Utility
         public Point PhysicalFromGame(Duad gameLocation)
         {
             return new Point(
-                puzzleLeftMargin + Util.IntFromFP(gameLocation.Column * pixelsPerCell),
-                puzzleTopMargin + Util.IntFromFP(gameLocation.Row * pixelsPerCell));
+                puzzleLeftMargin + Util.IntFromFP(gameLocation.Column * PixelsPerCell),
+                puzzleTopMargin + Util.IntFromFP(gameLocation.Row * PixelsPerCell));
         }
 
         /// <summary>
@@ -108,8 +108,8 @@ namespace Sudoku.UI.Utility
         public Point PhysicalCellCenterFromGame(Duad gameLocation)
         {
             return new Point(
-                puzzleLeftMargin + Util.IntFromFP(pixelsPerCell * (gameLocation.Column + 0.5f)),
-                puzzleTopMargin + Util.IntFromFP(pixelsPerCell * (gameLocation.Row + 0.5F)));
+                puzzleLeftMargin + Util.IntFromFP(PixelsPerCell * (gameLocation.Column + 0.5f)),
+                puzzleTopMargin + Util.IntFromFP(PixelsPerCell * (gameLocation.Row + 0.5F)));
         }
         #endregion
 
@@ -124,8 +124,8 @@ namespace Sudoku.UI.Utility
             var result = new Triad();
 
             // Calculate row and column in floating-point (interim data)
-            var row = (physical.Y - puzzleTopMargin - PuzzlePadding) / pixelsPerCell;
-            var column = (physical.X - puzzleLeftMargin - PuzzlePadding) / pixelsPerCell;
+            var row = (physical.Y - puzzleTopMargin - PuzzlePadding) / PixelsPerCell;
+            var column = (physical.X - puzzleLeftMargin - PuzzlePadding) / PixelsPerCell;
 
             // Game Row and Column are truncated versions, excluding the last pixel
             // on the right and on the bottom and forcing non-negative

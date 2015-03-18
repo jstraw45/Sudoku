@@ -1,0 +1,558 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sudoku.Model.UnitTests</name>
+    </assembly>
+    <members>
+        <member name="T:Sudoku.Model.UnitTests.CellUnitTests">
+            <summary>
+            Unit tests for Sudoku.Model.Cell
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_Constructor_InstantiationSuccessful">
+            <summary>
+            Does the new Cell instantiate correctly?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_Constructor_InstantiationWithOptionalParametersSuccessful">
+            <summary>
+            Do specified Row, Column, and Region parameter instantiate correctly?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_Constructor_RowTooLow">
+            <summary>
+            Does Row too low throw Exception?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_Constructor_RowTooHigh">
+            <summary>
+            Does Row too high throw Exception?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_Constructor_ColumnTooLow">
+            <summary>
+            Does Column too low throw Exception?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_Constructor_ColumnTooHigh">
+            <summary>
+            Does Column too high throw Exception?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_Constructor_RegionTooLow">
+            <summary>
+            Does Region too low throw Exception?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_Constructor_RegionTooHigh">
+            <summary>
+            Does Region too high throw Exception?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_Constructor_AllPossibilitiesRemain">
+            <summary>
+            Does the new Cell contain all feasible answers?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_Constructor_IsSolvable">
+            <summary>
+            Are there possible solutions that have not been disqualified?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_Constructor_CurrentValueStateValid">
+            <summary>
+            Is the new Cell correctly marked as answer unknown?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_ConstructorSolved_InstantiationSuccessful">
+            <summary>
+            Does the new Cell instantiate correctly?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_ConstructorSolved_BadParameter">
+            <summary>
+            Does an out-of-range parameter throw correct Exception?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_IsPotentialSolution_Valid">
+            <summary>
+            Are valid possibilities correctly identified?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_IsPotentialSolution_TooLow">
+            <summary>
+            Does an out-of-range value throw an Exception?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_IsPotentialSolution_TooHigh">
+            <summary>
+            Does an out-of-range value throw an Exception?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_Disqualify_SuccessfullyRemovesPossibility">
+            <summary>
+            Does Disqualify remove the value from consideration?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_Disqualify_TooLow">
+            <summary>
+            Does Disqualify throw exception if value is too low?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_Disqualify_TooHigh">
+            <summary>
+            Does Disqualify throw exception if value is too high?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_AddScratchInt_SuccessfullyAddsGuess">
+            <summary>
+            Does AddScratch add the value as a "maybe"?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_AddScratchInt_TooLow">
+            <summary>
+            Does AddScratch throw exception if value is too low?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_AddScratchInt_TooHigh">
+            <summary>
+            Does AddScratch throw exception if value is too high?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_AddScratchChar_SuccessfullyAddsGuess">
+            <summary>
+            Does AddScratch add the value as a "maybe"?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_AddScratchChar_TooLow">
+            <summary>
+            Does AddScratch throw exception if value is too low?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_AddScratchChar_TooHigh">
+            <summary>
+            Does AddScratch throw exception if value is too high?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_RemoveScratchInt_SuccessfullyRemovesGuess">
+            <summary>
+            Does RemoveScratch change the value to "probably not"?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_RemoveScratchInt_TooLow">
+            <summary>
+            Does RemoveScratch throw exception if value is too low?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_RemoveScratchInt_TooHigh">
+            <summary>
+            Does RemoveScratch throw exception if value is too high?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_RemoveScratchChar_SuccessfullyRemovesGuess">
+            <summary>
+            Does RemoveScratch change the value to "probably not"?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_RemoveScratchChar_TooLow">
+            <summary>
+            Does RemoveScratch throw exception if value is too low?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_RemoveScratchChar_TooHigh">
+            <summary>
+            Does RemoveScratch throw exception if value is too high?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_Set_Valid">
+            <summary>
+            Can an in-range value be successfully set?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_Set_TooHigh">
+            <summary>
+            Does an out-of-range value throw an Exception?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_Set_Disqualified">
+            <summary>
+            Does a disqualified possibility throw an Exception?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_Set_Unsolvable">
+            <summary>
+            Does an unsolvable Cell throw an Exception?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_Clue_Valid">
+            <summary>
+            Does Clue properly represent legal square puzzles
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_ValueAtIndexTest_Valid">
+            <summary>
+            Is correct value identified?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_ValueAtIndexTest_TooLow">
+            <summary>
+            Does an out-of-range value throw an Exception?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_ValueAtIndexTest_TooHigh">
+            <summary>
+            Does an out-of-range value throw an Exception?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_IndexOfValue_Valid">
+            <summary>
+            Is correct location identified?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_IndexOfValue_TooLow">
+            <summary>
+            Does an out-of-range value throw an Exception?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_IndexOfValue_TooHigh">
+            <summary>
+            Does an out-of-range value throw an Exception?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_ToString_ValidUnsolved">
+            <summary>
+            Is string representation of unsolved Cell correct?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.CellUnitTests.Cell_ToString_ValidSolved">
+            <summary>
+            Is string representation of solved Cell correct?
+            </summary>
+        </member>
+        <member name="T:Sudoku.Model.UnitTests.GameUnitTests">
+            <summary>
+            Unit tests for Sudoku.Model.Grid
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.#ctor">
+            <summary>
+            Unit tests for Sudoku.Model.Grid
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_Constructor2Param_Valid">
+            <summary>
+            Does the new Grid instantiate correctly?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_Constructor2Param_ImperfectSquare">
+            <summary>
+            Does the new Grid reject non-perfect-square argument?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_Constructor2Param_ArgumentTooSmall">
+            <summary>
+            Does the new Grid refuse argument too small?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_Constructor2Param_ArgumentTooLarge">
+            <summary>
+            Does the new Grid refuse argument too large?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_Constructor2Param_CellsOfValidType">
+            <summary>
+            Is the two-dimensional array created correctly?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_Constructor3Param_ValidGrid">
+            <summary>
+            Does the new Grid instantiate correctly?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_Constructor3Param_ValidKnownCell">
+            <summary>
+            Does the new Grid instantiate known Cells correctly?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_Constructor3Param_ImperfectSquare">
+            <summary>
+            Does the new Grid reject non-perfect-square argument?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_Constructor3Param_ArgumentTooSmall">
+            <summary>
+            Does the new Grid refuse argument too small?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_Constructor3Param_ArgumentTooLarge">
+            <summary>
+            Does the new Grid refuse argument too large?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_Constructor3Param_ArgumentDimensionsMismatched">
+            <summary>
+            Does the new Grid refuse mismatched arguments?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_Constructor3Param_CellsOfValidType">
+            <summary>
+            Is the two-dimensional array created correctly?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_SolvedCells_Correct">
+            <summary>
+            Is the count of correctly solved Cells right?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_RemainingPossibilities_Correct">
+            <summary>
+            Is the count of remaining possibilities right?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_Rows_Correct">
+            <summary>
+            Is the Rows List correct?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_Columns_Correct">
+            <summary>
+            Is the Columns List correct?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_Regions_Correct">
+            <summary>
+            Is the Regions List correct?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_Identifier_Correct">
+            <summary>
+            Is the Identifier correctly persistent?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_Difficulty_Correct">
+            <summary>
+            Is Difficulty correctly persistent?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_Difficulty_Invalid">
+            <summary>
+            Does a negative Difficulty throw an Exception?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_StepCount_Correct">
+            <summary>
+            Is StepCount correctly persistent?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_StepCount_Invalid">
+            <summary>
+            Does a negative StepCount throw an Exception?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_IdentifyRegion_Correct">
+            <summary>
+            Is the region for a Cell correctly identified?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_LocationsInRegion_RandomRegionValid">
+            <summary>
+            Do rows and columns of identified cells match the specified region?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_CellsByRow_RandomRowValid">
+            <summary>
+            Does CellsByRow(random) match the same row of the Grid?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_CellsByColumn_RandomColumnValid">
+            <summary>
+            Does CellsByColumn(random) match the same column of the Grid?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_CellsByRegion_RandomRegionValid">
+            <summary>
+            Does CellsByRegion(random) match the same region of the Grid?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_RowsIntersectingRegion_RandomRegionValid">
+            <summary>
+            Does RowsIntersectingRegion() identify correct rows?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_RowRegionIntersection_Valid">
+            <summary>
+            Do correct Cells appear when row and region intersect?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_RowRegionIntersection_NoIntersection">
+            <summary>
+            When row and region do not intersect, does empty list appear?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_RowExcludeRegion_Valid">
+            <summary>
+            Do correct Cells appear when row and region intersect?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_RowExcludeRegion_NoIntersection">
+            <summary>
+            When row and region do not intersect, does full row appear?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_RegionExcludeRow_Valid">
+            <summary>
+            Do correct Cells appear when row and region intersect?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_RegionExcludeRow_NoIntersection">
+            <summary>
+            When row and region do not intersect, does full region appear?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_ColumnsIntersectingRegion_RandomRegionValid">
+            <summary>
+            Does ColumnsIntersectingRegion() identify correct columns?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_ColumnRegionIntersection_Valid">
+            <summary>
+            Do correct Cells appear when column and region intersect?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_ColumnRegionIntersection_NoIntersection">
+            <summary>
+            When column and region do not intersect, does empty list appear?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_ColumnExcludeRegion_Valid">
+            <summary>
+            Do correct Cells appear when column and region intersect?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_ColumnExcludeRegion_NoIntersection">
+            <summary>
+            When column and region do not intersect, does full column appear?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_RegionExcludeColumn_Valid">
+            <summary>
+            Do correct Cells appear when column and region intersect?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_RegionExcludeColumn_NoIntersection">
+            <summary>
+            When column and region do not intersect, does full region appear?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_SetCell_ValidDisqualificationVerification">
+            <summary>
+            Does setting a Cell value correctly disqualify others in same row, column, and region?
+            <remarks>Depends on Cell.IdentifyRegion, tested elsewhere</remarks>
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_SetCellFromMoveObject_ValidDisqualificationVerification">
+            <summary>
+            Does setting a Cell value correctly disqualify others in same row, column, and region?
+            <remarks>Depends on Cell.IdentifyRegion, tested elsewhere</remarks>
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_SetCell_DisqualifiedValue">
+            <summary>
+            Does attempting to set a Cell to a disqualified value throw an Exception
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_ToString_SolvedValid">
+            <summary>
+            Is the text representation of the Grid correct for a solved 4x4 puzzle?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_DeepClone_SameValues">
+            <summary>
+            Is the clone equivalent?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_DeepClone_DifferentInstances">
+            <summary>
+            Is the clone distinct from the original?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.GameUnitTests.Game_ToString_UnSolvedValid">
+            <summary>
+            Is the text representation of the Grid correct for an unsolved puzzle?
+            </summary>
+        </member>
+        <member name="T:Sudoku.Model.Tests.LogicTests">
+            <summary>
+            Unit tests for Sudoku.Model.Logic
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.Tests.LogicTests.Logic_Loners_Valid">
+            <summary>
+            Are all lone values - and only those - found?
+            <remarks>Relies on manual verification of a specific puzzle</remarks>
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.Tests.LogicTests.Logic_Unique_Valid">
+            <summary>
+            Are all unsolved Cells where only one Cell in a row/column/region can provide
+            a specific value - and only those - found?
+            <remarks>Relies on manual verification of a specific puzzle</remarks>
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.Tests.LogicTests.Logic_ElsewhereInGroup_Valid">
+            <summary>
+            Are Moves that must be excluded due to requirement in other Cells in same row/column/region found?
+            <remarks>Relies on manual verification of a specific puzzle</remarks>
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.Tests.LogicTests.Logic_IntersectingExclusions_Valid">
+            <summary>
+            Are Moves that must be excluded due to intersection constraints between regions and rows/columns found?
+            <remarks>Relies on manual verification of a specific puzzle</remarks>
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.Tests.LogicTests.Logic_SolveRecursively_Valid">
+            <summary>
+            Are Moves that must be excluded due to intersection constraints between regions and rows/columns found?
+            <remarks>Relies on manual verification of a specific puzzle</remarks>
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.Tests.LogicTests.Logic_SolveRecursively_ScrambleCharsValid">
+            <summary>
+            Do puzzles with different char scrambling solve similarly?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.Tests.LogicTests.Logic_SolveRecursively_RotateClockwiseValid">
+            <summary>
+            Do puzzles with different rotation solve similarly?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.Tests.LogicTests.Logic_SolveRecursively_FlipHorizontalValid">
+            <summary>
+            Do puzzles with different horizontal mirroring solve similarly?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.Tests.LogicTests.Logic_SolveRecursively_FlipVerticalValid">
+            <summary>
+            Do puzzles with different vertical mirroring solve similarly?
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.Tests.LogicTests.AssertCellEquality(Sudoku.Model.Game,Sudoku.Model.Game)">
+            <summary>
+            Determine logical equivalence of two Games
+            </summary>
+            <param name="first">A Sudoku game in process of being solved</param>
+            <param name="second">Another Sudoku game in process of being solved</param>
+        </member>
+        <member name="T:Sudoku.Model.UnitTests.PuzzleFactoryUnitTests">
+            <summary>
+            Unit tests for Sudoku.Model.PuzzleFactory
+            </summary>
+        </member>
+        <member name="M:Sudoku.Model.UnitTests.PuzzleFactoryUnitTests.PuzzleFactory_GetSudoku_Valid">
+            <summary>
+            Does the factory instantiate a new game correctly?
+            </summary>
+        </member>
+    </members>
+</doc>

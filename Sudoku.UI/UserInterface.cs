@@ -7,6 +7,10 @@
  * 02/17/2015: refactored methods
  * 02/22/2015: trapped (and logged) key press and mouse click
  * 02/23/2015: added stack push/pop
+ * 03/01/2015: added Exclusion
+ * 03/06/2015: updated feedback to show remaining hints
+ * 03/08/2015: added Intersections
+ * 03/10/2015: added Autosolve
  ***************************************************************/
 using Sudoku.Model;
 using Sudoku.UI.Utility;
@@ -42,12 +46,13 @@ namespace Sudoku.UI
 
         Brush backgroundBrush = new SolidBrush(backgroundColor);
         Brush hintBrush = new SolidBrush(Color.FromArgb(128, 128, 128, 128));       // Light gray
+        Brush noteBrush = new SolidBrush(Color.FromArgb(255, 36, 111, 159));        // Deep blue-gray
         Brush knownBrush = new SolidBrush(gridColor);
-        Brush solveBrush = new SolidBrush(Color.FromArgb(255, 255, 051, 051));      // ~Red-Orange
+        Brush solveBrush = new SolidBrush(Color.FromArgb(255, 048, 173, 035));      // Green
 
         StringFormat stringFormat = new StringFormat(); // Used to configure text in graphics
         Font hintFont = new Font("Consolas", 10f);      // Small font for hints
-        Font puzzleFont = new Font("Consolas", 14f);    // Large font for static and solved cells
+        Font puzzleFont = new Font("Consolas", 18f);    // Large font for static and solved cells
 
         // Shared calculated values used for scaling and translating
         private int sqrtGameSize;                       // Linear cells in region or linear hints in cell
@@ -91,7 +96,7 @@ namespace Sudoku.UI
         }
         #endregion
 
-        #region [ Event-handler methods ]
+        #region [ Graphic event-handler methods ]
         /// <summary>
         /// Redraw panel whenever it is resized
         /// </summary>
@@ -156,10 +161,28 @@ namespace Sudoku.UI
                                 hintFont, hintBrush, destination.X, destination.Y, stringFormat);
                         }
                     }
+                    else if (chkNotes.Checked)  // Show user notes, when desired
+                    {
+                        for (var note = 0; note < game.SideLength; note++)
+                        {
+                            var destination = trans.PhysicalFromGame(new Triad(row, column, note));
+                            graphicsObject.DrawString(thisCell.ScratchPad[note].ToString(),
+                                hintFont, noteBrush, destination.X, destination.Y, stringFormat);
+                        }
+                    }
                 }
+
             // Update user feedback
-            lblFeedback.Text = String.Format("{0:d} of {1:d} cells solved",
-                game.SolvedCells, game.SideLength * game.SideLength);
+            lblFeedback.Text = chkHints.Checked
+                ? String.Format("{0:d} of {1:d} solved, {2:d} hints, {3:d} steps; level {4:d}",
+                    game.SolvedCells, game.SideLength * game.SideLength, game.RemainingPossibilities, game.StepCount, game.Difficulty)
+                : String.Format("{0:d} of {1:d} solved, {2:d} steps; level {3:d}",
+                    game.SolvedCells, game.SideLength * game.SideLength, game.StepCount, game.Difficulty);
+            lblTime.Text = String.Format(@"{0:h\:mm\:ss}", DateTime.Now - launch);
+
+            // Stop the clock if done
+            if (game.IsSolved)
+                tmrClock.Enabled = false;
         }
 
         /// <summary>
@@ -171,25 +194,37 @@ namespace Sudoku.UI
         {
             // Identify game-based location of the mouse pointer
             var here = new Point(e.X, e.Y);
+            Cell currentCell = game.Cells[mouseLocation.Row, mouseLocation.Column];
 
-            // Save location, but only if mouse is over the true game area
-            if (trans.OnGame(here))
-                mouseLocation = trans.GameFromPhysical(here);
-
-            lblFeedback.Text = "Clicked at " + mouseLocation.ToString(trans.HintZoneUnknown);
-            string.Format("Clicked at Row: {0:d}, Col: {1:d}", mouseLocation.Row, mouseLocation.Column);
-
-            // Click close enough to a hint zone?
-            if (!(mouseLocation.HintZone == trans.HintZoneUnknown))
+            // Is the mouse over a hint zone in the game area?
+            if (trans.OnGame(here) && mouseLocation.HintZone != trans.HintZoneUnknown)
             {
-                // Save a snapshot of the game as it currently stands
-                gameHistory.Push(game.DeepClone);
-                //TODO: Modify game
+                if (chkNotes.Checked)           // In notes mode - toggle visibility of note
+                {
+                    if (currentCell.ScratchPad[mouseLocation.HintZone] == Cell.valueWhenUnsolved)
+                        currentCell.AddScratch(mouseLocation.HintZone);
+                    else
+                        currentCell.RemoveScratch(mouseLocation.HintZone);
 
-                RefreshPuzzle();
+                    RefreshPuzzle();
+                }
+                else if (chkHints.Checked)      // In visible hints mode - disqualify (or potentially requalify) value
+                {
+                    // Identify the char that represents the specific HintZone within the cell
+                    char potentialSolution = currentCell.ValueAtIndex(mouseLocation.HintZone);
+
+                    // Is the specified point still a valid solution (i.e., has it not yet been disqualified)?
+                    if (currentCell.IsPotentialSolution(potentialSolution))
+                    {
+                        // Save a snapshot of the game as it currently stands
+                        gameHistory.Push(game.DeepClone);
+
+                        // Declare the option unavailable
+                        currentCell.Disqualify(potentialSolution);
+                        RefreshPuzzle();
+                    }
+                }
             }
-            //TODO: Determine action, if any, when clicking outside a hint zone
-
         }
 
         /// <summary>
@@ -202,7 +237,7 @@ namespace Sudoku.UI
             // Identify game-based location of the mouse pointer
             var here = new Point(e.X, e.Y);
 
-            // Save location, but only if mouse is over the true game area
+            // Save location for later keyboard interaction, but only if mouse is over the game
             if (trans.OnGame(here))
                 mouseLocation = trans.GameFromPhysical(here);
         }
@@ -221,12 +256,17 @@ namespace Sudoku.UI
                 {
                     if (gameHistory.Count > 0)
                     {
-                        game = gameHistory.Pop();                       // This is, of course, dangerous...
+                        game = gameHistory.Pop();                       // Pull most-recently saved game off the stack
+                        if (!game.IsSolved)                             // Restart the clock in case Game is no longer done
+                            tmrClock.Enabled = true;
                         RefreshPuzzle();
                     }
                     else
                     {
                         Beep();                                         // Inform user of end of stack
+                        game.Difficulty = 0;
+                        game.StepCount = 0;
+                        RefreshPuzzle();
                     }
                 }
             }
@@ -241,7 +281,7 @@ namespace Sudoku.UI
                     // Save a snapshot of the game as it currently stands
                     gameHistory.Push(game.DeepClone);
 
-                    var move = new Move(mouseLocation.Row, mouseLocation.Column, charPressed);
+                    var move = new Move(mouseLocation.Row, mouseLocation.Column, charPressed, MoveType.Solution);
                     game.SetCell(move);
                     RefreshPuzzle();
                 }
@@ -249,13 +289,21 @@ namespace Sudoku.UI
                 {
                     Beep();
                 }
-
-                ////TODO: replace with useful code!
-                //// Temporary message to provide feedback
-                //lblFeedback.Text = String.Format("Pressed {0} at {1}",
-                //    charPressed,
-                //    mouseLocation.ToString(trans.HintZoneUnknown));
             }
+        }
+
+        /// <summary>
+        /// Change status of hint display
+        /// </summary>
+        /// <param name="sender">Object that triggered the event handler</param>
+        /// <param name="e">Object encapsulating event properties and methods</param>
+        private void chkNotes_CheckedChanged(object sender, EventArgs e)
+        {
+            // System hints mode disables user notes mode
+            if (chkNotes.Checked)
+                chkHints.Checked = false;
+
+            RefreshPuzzle();
         }
 
         /// <summary>
@@ -265,6 +313,10 @@ namespace Sudoku.UI
         /// <param name="e">Object encapsulating event properties and methods</param>
         private void chkHints_CheckedChanged(object sender, EventArgs e)
         {
+            // User notes mode disables hints mode
+            if (chkHints.Checked)
+                chkNotes.Checked = false;
+
             RefreshPuzzle();
         }
 
@@ -276,11 +328,107 @@ namespace Sudoku.UI
         private void tmrClock_Tick(object sender, EventArgs e)
         {
             lblTime.Text = String.Format(@"{0:h\:mm\:ss}", DateTime.Now - launch);
-
-            // Stop the clock when done
-            if (game.IsSolved)
-                tmrClock.Enabled = false;
         }
+        #endregion
+
+        #region [ Puzzle-solving event-handler methods ]
+        /// <summary>
+        /// Solve game automatically - as far as is currently possible
+        /// </summary>
+        /// <param name="sender">Object that triggered the event handler</param>
+        /// <param name="e">Object encapsulating event properties and methods</param>
+        private void tsbAuto_ButtonClick(object sender, EventArgs e)
+        {
+            // Anything left to do?
+            if (game.IsSolved) { Hand(); return; }
+
+            // Set of algorithm methods, ordered from simplest to most complex
+            var process = new List<Func<Game, List<Move>>>();
+            process.Add(Logic.Loners);
+            process.Add(Logic.Unique);
+            process.Add(Logic.ElsewhereInGroup);
+            process.Add(Logic.IntersectingExclusions);
+
+            // Save a snapshot of the game as it currently stands
+            gameHistory.Push(game.DeepClone);
+
+            Logic.SolveRecursively(process, 0, game);
+            RefreshPuzzle();
+        }
+
+        /// <summary>
+        /// Solve loners - those unsolved Cells that have only one remaining possibility
+        /// </summary>
+        /// <param name="sender">Object that triggered the event handler</param>
+        /// <param name="e">Object encapsulating event properties and methods</param>
+        private void tsbLoners_Click(object sender, EventArgs e)
+        {
+            // Anything left to do?
+            if (game.IsSolved) { Hand(); return; }
+
+            // Save a snapshot of the game as it currently stands
+            gameHistory.Push(game.DeepClone);
+            game.StepCount++;
+
+            Logic.UpdateCellValues(Logic.Loners, game);
+
+            RefreshPuzzle();
+        }
+
+        /// <summary>
+        /// Solve uniques - where only one Cell in a row/column/region can provide a specific value
+        /// </summary>
+        /// <param name="sender">Object that triggered the event handler</param>
+        /// <param name="e">Object encapsulating event properties and methods</param>
+        private void tsbUnique_ButtonClick(object sender, EventArgs e)
+        {
+            // Anything left to do?
+            if (game.IsSolved) { Hand(); return; }
+
+            // Save a snapshot of the game as it currently stands
+            gameHistory.Push(game.DeepClone);
+            game.StepCount++;
+
+            Logic.UpdateCellValues(Logic.Unique, game);
+            RefreshPuzzle();
+        }
+
+        /// <summary>
+        /// Find all Moves that must be excluded due to requirement in other Cells in same row/column/region
+        /// </summary>
+        /// <param name="sender">Object that triggered the event handler</param>
+        /// <param name="e">Object encapsulating event properties and methods</param>
+        private void tsbElsewhereInGroup_ButtonClick(object sender, EventArgs e)
+        {
+            // Anything left to do?
+            if (game.IsSolved) { Hand(); return; }
+
+            // Save a snapshot of the game as it currently stands
+            gameHistory.Push(game.DeepClone);
+            game.StepCount++;
+
+            Logic.UpdateCellValues(Logic.ElsewhereInGroup, game);
+            RefreshPuzzle();
+        }
+
+        /// <summary>
+        /// Find all Moves that must be excluded due to intersection constraints between regions and rows/columns 
+        /// </summary>
+        /// <param name="sender">Object that triggered the event handler</param>
+        /// <param name="e">Object encapsulating event properties and methods</param>
+        private void tsbIntersectionExclusions_ButtonClick(object sender, EventArgs e)
+        {
+            // Anything left to do?
+            if (game.IsSolved) { Hand(); return; }
+
+            // Save a snapshot of the game as it currently stands
+            gameHistory.Push(game.DeepClone);
+            game.StepCount++;
+
+            Logic.UpdateCellValues(Logic.IntersectingExclusions, game);
+            RefreshPuzzle();
+        }
+
         #endregion
 
         #region [ Helper methods ]
@@ -301,56 +449,12 @@ namespace Sudoku.UI
         }
 
         /// <summary>
-        /// Re-draw the puzzle in it's current state
+        /// Re-draw the puzzle in its current state
         /// </summary>
         private void RefreshPuzzle()
         {
             pnlPuzzle.Invalidate();                                     // Request repainting
         }
         #endregion
-
-        // Sneak peek into future sprints...
-
-        /// <summary>
-        /// Solve loners - those unsolved Cells that have only one remaining possibility
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnLoners_Click(object sender, EventArgs e)
-        {
-            // Anything left to do?
-            if (game.IsSolved) { Hand(); return; }
-
-            // Save a snapshot of the game as it currently stands
-            gameHistory.Push(game.DeepClone);
-
-            // What can be done next?
-            var whatToDo = Logic.Loners(game);
-            foreach (var move in whatToDo)          // Do set as a block
-                game.SetCell(move);
-
-            RefreshPuzzle();
-        }
-
-        /// <summary>
-        /// Solve uniques - where only one Cell in a row/column/region can provide a specific value
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnUnique_ButtonClick(object sender, EventArgs e)
-        {
-            // Anything left to do?
-            if (game.IsSolved) { Hand(); return; }
-
-            // Save a snapshot of the game as it currently stands
-            gameHistory.Push(game.DeepClone);
-
-            // What can be done next?
-            var whatToDo = Logic.Unique(game);
-            foreach (var move in whatToDo)          // Do set as a block
-                game.SetCell(move);
-
-            RefreshPuzzle();
-        }
     }
 }

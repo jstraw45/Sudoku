@@ -8,3 +8,33 @@ G:\C# 2013\Experiments\Sudoku\Sudoku.UI.Utility.UnitTests\bin\Debug\Utility.pdb
 G:\C# 2013\Experiments\Sudoku\Sudoku.UI.Utility.UnitTests\bin\Debug\Utility.xml
 G:\C# 2013\Experiments\Sudoku\Sudoku.UI.Utility.UnitTests\obj\Debug\Sudoku.UI.Utility.UnitTests.dll
 G:\C# 2013\Experiments\Sudoku\Sudoku.UI.Utility.UnitTests\obj\Debug\Sudoku.UI.Utility.UnitTests.pdb
+E:\CIT 275\Sudoku - 02242015\Sudoku.UI.Utility.UnitTests\bin\Debug\Sudoku.UI.Utility.UnitTests.dll
+E:\CIT 275\Sudoku - 02242015\Sudoku.UI.Utility.UnitTests\bin\Debug\Sudoku.UI.Utility.UnitTests.pdb
+E:\CIT 275\Sudoku - 02242015\Sudoku.UI.Utility.UnitTests\bin\Debug\Sudoku.UI.Utility.dll
+E:\CIT 275\Sudoku - 02242015\Sudoku.UI.Utility.UnitTests\bin\Debug\Utility.dll
+E:\CIT 275\Sudoku - 02242015\Sudoku.UI.Utility.UnitTests\bin\Debug\Sudoku.UI.Utility.pdb
+E:\CIT 275\Sudoku - 02242015\Sudoku.UI.Utility.UnitTests\bin\Debug\Utility.pdb
+E:\CIT 275\Sudoku - 02242015\Sudoku.UI.Utility.UnitTests\bin\Debug\Utility.xml
+E:\CIT 275\Sudoku - 02242015\Sudoku.UI.Utility.UnitTests\obj\Debug\Sudoku.UI.Utility.UnitTests.csprojResolveAssemblyReference.cache
+E:\CIT 275\Sudoku - 02242015\Sudoku.UI.Utility.UnitTests\obj\Debug\Sudoku.UI.Utility.UnitTests.dll
+E:\CIT 275\Sudoku - 02242015\Sudoku.UI.Utility.UnitTests\obj\Debug\Sudoku.UI.Utility.UnitTests.pdb
+E:\CIT 275\Sudoku\Sudoku.UI.Utility.UnitTests\bin\Debug\Sudoku.UI.Utility.UnitTests.dll
+E:\CIT 275\Sudoku\Sudoku.UI.Utility.UnitTests\bin\Debug\Sudoku.UI.Utility.UnitTests.pdb
+E:\CIT 275\Sudoku\Sudoku.UI.Utility.UnitTests\bin\Debug\Sudoku.UI.Utility.dll
+E:\CIT 275\Sudoku\Sudoku.UI.Utility.UnitTests\bin\Debug\Utility.dll
+E:\CIT 275\Sudoku\Sudoku.UI.Utility.UnitTests\bin\Debug\Sudoku.UI.Utility.pdb
+E:\CIT 275\Sudoku\Sudoku.UI.Utility.UnitTests\bin\Debug\Utility.pdb
+E:\CIT 275\Sudoku\Sudoku.UI.Utility.UnitTests\bin\Debug\Utility.xml
+E:\CIT 275\Sudoku\Sudoku.UI.Utility.UnitTests\obj\Debug\Sudoku.UI.Utility.UnitTests.csprojResolveAssemblyReference.cache
+E:\CIT 275\Sudoku\Sudoku.UI.Utility.UnitTests\obj\Debug\Sudoku.UI.Utility.UnitTests.dll
+E:\CIT 275\Sudoku\Sudoku.UI.Utility.UnitTests\obj\Debug\Sudoku.UI.Utility.UnitTests.pdb
+E:\CIT 275\Sudoku - Sprint3\Sudoku.UI.Utility.UnitTests\bin\Debug\Sudoku.UI.Utility.UnitTests.dll
+E:\CIT 275\Sudoku - Sprint3\Sudoku.UI.Utility.UnitTests\bin\Debug\Sudoku.UI.Utility.UnitTests.pdb
+E:\CIT 275\Sudoku - Sprint3\Sudoku.UI.Utility.UnitTests\bin\Debug\Sudoku.UI.Utility.dll
+E:\CIT 275\Sudoku - Sprint3\Sudoku.UI.Utility.UnitTests\bin\Debug\Utility.dll
+E:\CIT 275\Sudoku - Sprint3\Sudoku.UI.Utility.UnitTests\bin\Debug\Sudoku.UI.Utility.pdb
+E:\CIT 275\Sudoku - Sprint3\Sudoku.UI.Utility.UnitTests\bin\Debug\Utility.pdb
+E:\CIT 275\Sudoku - Sprint3\Sudoku.UI.Utility.UnitTests\bin\Debug\Utility.xml
+E:\CIT 275\Sudoku - Sprint3\Sudoku.UI.Utility.UnitTests\obj\Debug\Sudoku.UI.Utility.UnitTests.csprojResolveAssemblyReference.cache
+E:\CIT 275\Sudoku - Sprint3\Sudoku.UI.Utility.UnitTests\obj\Debug\Sudoku.UI.Utility.UnitTests.dll
+E:\CIT 275\Sudoku - Sprint3\Sudoku.UI.Utility.UnitTests\obj\Debug\Sudoku.UI.Utility.UnitTests.pdb

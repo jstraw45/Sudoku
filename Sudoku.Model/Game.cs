@@ -1,13 +1,18 @@
-﻿/****************************************************************
+﻿/********************************************************************
  * Puzzle game containing Sudoku cells
  * Jeff Straw | Northwestern Michigan College 
  * 02/05/2015: development began
  * 02/14/2015: changed Cell data from int to char
  * 02/20/2015: refactored
  * 02/23/2015: DeepClone added
- ***************************************************************/
+ * 03/03/2015: Rows, Columns, Regions added
+ * 03/06/2015" Identifier added
+ * 03/08/2015: added methods that identify intersection groupings
+ * 03/10/2015: added Difficulty, StepCount properties
+ *******************************************************************/
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Utility;
 
 namespace Sudoku.Model
@@ -21,6 +26,9 @@ namespace Sudoku.Model
         #region [ Fields ]
         // Fields
         private Cell[,] _cells;                             // SideLength:row * SideLength:column
+        private string _identifier;
+        private int _difficulty;
+        private int _stepCount;
         private int _sideLength;
         internal int squareRootOfSideLength = 0;
         #endregion
@@ -44,6 +52,48 @@ namespace Sudoku.Model
             get { return _cells; }
             private set { _cells = value; }
         }
+
+        /// <summary>
+        /// Game representation in list of lists arranged by row
+        /// </summary>
+        public List<List<Cell>> Rows
+        {
+            get
+            {
+                var result = new List<List<Cell>>();
+                for (var row = 0; row < SideLength; row++)
+                    result.Add(CellsByRow(row));
+                return result;
+            }
+        }
+
+        /// <summary>
+        /// Game representation in list of lists arranged by column
+        /// </summary>
+        public List<List<Cell>> Columns
+        {
+            get
+            {
+                var result = new List<List<Cell>>();
+                for (var column = 0; column < SideLength; column++)
+                    result.Add(CellsByColumn(column));
+                return result;
+            }
+        }
+
+        /// <summary>
+        /// Game representation in list of lists arranged by region
+        /// </summary>
+        public List<List<Cell>> Regions
+        {
+            get
+            {
+                var result = new List<List<Cell>>();
+                for (var region = 0; region < SideLength; region++)
+                    result.Add(CellsByRegion(region));
+                return result;
+            }
+        }
         
         /// <summary>
         /// Number of rows, columns, and regions in the Game
@@ -52,6 +102,47 @@ namespace Sudoku.Model
         {
             get { return _sideLength; }
             private set { _sideLength = value; }            // Validated and set in constructor
+        }
+
+        /// <summary>
+        /// Optional text designation for this particular Game
+        /// </summary>
+        public string Identifier
+        {
+            get { return _identifier; }
+            set { _identifier = value.Trim(); }
+        }
+
+        /// <summary>
+        /// Relative measure of solving complexity as determined by game logic
+        /// </summary>
+        public int Difficulty
+        {
+            get { return _difficulty; }
+            set
+            {
+                if (value >= 0)
+                    _difficulty = value;
+                else
+                    throw new ArgumentOutOfRangeException("Difficulty",
+                        string.Format("Must be nonnegative; received {0:d}", value));
+            }
+        }
+
+        /// <summary>
+        /// Relative measure of effort taken to solve
+        /// </summary>
+        public int StepCount
+        {
+            get { return _stepCount; }
+            set
+            {
+                if (value >= 0)
+                    _stepCount = value;
+                else
+                    throw new ArgumentOutOfRangeException("StepCount",
+                        string.Format("Must be nonnegative; received {0:d}", value));
+            }
         }
 
         /// <summary>
@@ -86,6 +177,24 @@ namespace Sudoku.Model
 
                 return result;
             }
+        }
+
+        /// <summary>
+        /// Number of possibilites that have not been disqualified yet
+        /// </summary>
+        public int RemainingPossibilities
+        {
+            get
+            {
+                // Count the number of remaining possible solutions in Cells that have not been solved
+                int result = 0;
+                foreach (Cell c in Cells)
+                    if (!c.IsSolved)
+                        result += c.RemainingPossibilities.Count;
+
+                return result;
+            }
+            
         }
 
         /// <summary>
@@ -134,10 +243,14 @@ namespace Sudoku.Model
 
             // All OK - construct Cell[,] and instantiate internal Cells
             SideLength = sideLength;
+            Identifier = string.Empty;
+            Difficulty = 0;
+            StepCount = 0;
             Cells = new Cell[SideLength, SideLength];
             for (var row = 0; row < SideLength; row++)
                 for (var column = 0; column < SideLength; column++)
-                    Cells[row, column] = new Cell(minValue: firstValue, numValues: sideLength);
+                    Cells[row, column] = new Cell(minValue: firstValue, numValues: sideLength,
+                        row: row, column: column, region: IdentifyRegion(row, column));
         }
 
         /// <summary>
@@ -172,12 +285,16 @@ namespace Sudoku.Model
 
             // All OK - continue with persisting parameter and instantiating internal Cells
             SideLength = sideLength;
+            Identifier = string.Empty;
+            Difficulty = 0;
+            StepCount = 0;
             Cells = new Cell[SideLength, SideLength];
 
             // Create all Cells before specifying any values
             for (var row = 0; row < SideLength; row++)
                 for (var column = 0; column < SideLength; column++)
-                    Cells[row, column] = new Cell(minValue: firstValue, numValues: sideLength);
+                    Cells[row, column] = new Cell(minValue: firstValue, numValues: sideLength,
+                        row: row, column: column, region: IdentifyRegion(row, column));
 
             // Configure known Cells
             for (var row = 0; row < SideLength; row++)
@@ -270,6 +387,110 @@ namespace Sudoku.Model
         }
 
         /// <summary>
+        /// Identify rows that cross a given region
+        /// </summary>
+        /// <param name="region">Region to be matched</param>
+        /// <returns>Rows crossing the region</returns>
+        public List<int> RowsIntersectingRegion(int region)
+        {
+            return CellsByRegion(region)
+                .Select(c => c.Row)
+                .Distinct()
+                .ToList();
+        }
+
+        /// <summary>
+        /// Identify the intersection of a specified row and region
+        /// </summary>
+        /// <param name="row">Row to be matched</param>
+        /// <param name="region">Region to be matched</param>
+        /// <returns>Subset of the Game representing the intersection</returns>
+        public List<Cell> RowRegionIntersection(int row, int region)
+        {
+            return CellsByRow(row)
+                .Where(c => c.Region == region)
+                .ToList();
+        }
+
+        /// <summary>
+        /// Identify Cells beyond the intersection of a specified row and region
+        /// </summary>
+        /// <param name="row">Row to be matched</param>
+        /// <param name="region">Region to be excluded</param>
+        /// <returns>Subset of the Game representing the excluded Cells</returns>
+        public List<Cell> RowExcludeRegion(int row, int region)
+        {
+            return CellsByRow(row)
+                .Where(c => c.Region != region)
+                .ToList();
+        }
+
+        /// <summary>
+        /// Identify Cells beyond the intersection of a specified row and region
+        /// </summary>
+        /// <param name="row">Row to be excluded</param>
+        /// <param name="region">Region to be matched</param>
+        /// <returns>Subset of the Game representing the excluded Cells</returns>
+        public List<Cell> RegionExcludeRow(int row, int region)
+        {
+            return CellsByRegion(region)
+                .Where(c => c.Row != row)
+                .ToList();
+        }
+
+        /// <summary>
+        /// Identify columns that cross a given region
+        /// </summary>
+        /// <param name="region">Region to be matched</param>
+        /// <returns>Columns crossing the region</returns>
+        public List<int> ColumnsIntersectingRegion(int region)
+        {
+            return CellsByRegion(region)
+                .Select(c => c.Column)
+                .Distinct()
+                .ToList();
+        }
+
+        /// <summary>
+        /// Identify the intersection of a specified column and region
+        /// </summary>
+        /// <param name="column">Column to be matched</param>
+        /// <param name="region">Region to be matched</param>
+        /// <returns>Subset of the Game representing the intersection</returns>
+        public List<Cell> ColumnRegionIntersection(int column, int region)
+        {
+            return CellsByColumn(column)
+                .Where(c => c.Region == region)
+                .ToList();
+        }
+
+        /// <summary>
+        /// Identify Cells beyond the intersection of a specified column and region
+        /// </summary>
+        /// <param name="column">Column to be matched</param>
+        /// <param name="region">Region to be excluded</param>
+        /// <returns>Subset of the Game representing the excluded Cells</returns>
+        public List<Cell> ColumnExcludeRegion(int column, int region)
+        {
+            return CellsByColumn(column)
+                .Where(c => c.Region != region)
+                .ToList();
+        }
+
+        /// <summary>
+        /// Identify Cells beyond the intersection of a specified column and region
+        /// </summary>
+        /// <param name="column">Column to be excluded</param>
+        /// <param name="region">Region to be matched</param>
+        /// <returns>Subset of the Game representing the excluded Cells</returns>
+        public List<Cell> RegionExcludeColumn(int column, int region)
+        {
+            return CellsByRegion(region)
+                .Where(c => c.Column != column)
+                .ToList();
+        }
+
+        /// <summary>
         /// Enter the solution to a specified Cell
         /// </summary>
         /// <param name="rowNumber">Row to be matched</param>
@@ -310,7 +531,7 @@ namespace Sudoku.Model
         /// <summary>
         /// Enter the solution to a specified Cell
         /// </summary>
-        /// <param name="m">3D structure to identify potential move in a Sudoku puzzle</param>
+        /// <param name="move">3D structure to identify potential move in a Sudoku puzzle</param>
         public void SetCell(Move move)
         {
             this.SetCell(move.Row, move.Column, move.Value);

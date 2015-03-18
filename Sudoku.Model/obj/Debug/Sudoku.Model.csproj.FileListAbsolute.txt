@@ -18,3 +18,24 @@ G:\C# 2013\Experiments\Sudoku\Sudoku.Model\obj\Debug\Sudoku.Model.pdb
 G:\C# 2013\Experiments\Sudoku\Sudoku.Model\bin\Debug\Utility.dll
 G:\C# 2013\Experiments\Sudoku\Sudoku.Model\bin\Debug\Utility.pdb
 G:\C# 2013\Experiments\Sudoku\Sudoku.Model\bin\Debug\Utility.xml
+E:\CIT 275\Sudoku - 02242015\Sudoku.Model\bin\Debug\Sudoku.Model.xml
+E:\CIT 275\Sudoku - 02242015\Sudoku.Model\bin\Debug\Sudoku.Model.dll
+E:\CIT 275\Sudoku - 02242015\Sudoku.Model\bin\Debug\Sudoku.Model.pdb
+E:\CIT 275\Sudoku - 02242015\Sudoku.Model\bin\Debug\Utility.dll
+E:\CIT 275\Sudoku - 02242015\Sudoku.Model\bin\Debug\Utility.pdb
+E:\CIT 275\Sudoku - 02242015\Sudoku.Model\bin\Debug\Utility.xml
+E:\CIT 275\Sudoku - 02242015\Sudoku.Model\obj\Debug\Sudoku.Model.csprojResolveAssemblyReference.cache
+E:\CIT 275\Sudoku - 02242015\Sudoku.Model\obj\Debug\Sudoku.Model.dll
+E:\CIT 275\Sudoku - 02242015\Sudoku.Model\obj\Debug\Sudoku.Model.pdb
+E:\CIT 275\Sudoku\Sudoku.Model\bin\Debug\Utility.dll
+E:\CIT 275\Sudoku\Sudoku.Model\bin\Debug\Utility.pdb
+E:\CIT 275\Sudoku\Sudoku.Model\bin\Debug\Utility.xml
+E:\CIT 275\Sudoku - Sprint3\Sudoku.Model\bin\Debug\Sudoku.Model.xml
+E:\CIT 275\Sudoku - Sprint3\Sudoku.Model\bin\Debug\Sudoku.Model.dll
+E:\CIT 275\Sudoku - Sprint3\Sudoku.Model\bin\Debug\Sudoku.Model.pdb
+E:\CIT 275\Sudoku - Sprint3\Sudoku.Model\bin\Debug\Utility.dll
+E:\CIT 275\Sudoku - Sprint3\Sudoku.Model\bin\Debug\Utility.pdb
+E:\CIT 275\Sudoku - Sprint3\Sudoku.Model\bin\Debug\Utility.xml
+E:\CIT 275\Sudoku - Sprint3\Sudoku.Model\obj\Debug\Sudoku.Model.csprojResolveAssemblyReference.cache
+E:\CIT 275\Sudoku - Sprint3\Sudoku.Model\obj\Debug\Sudoku.Model.dll
+E:\CIT 275\Sudoku - Sprint3\Sudoku.Model\obj\Debug\Sudoku.Model.pdb
